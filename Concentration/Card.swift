@@ -11,18 +11,12 @@ import Foundation
 struct Card {
 	
 	
-	var isFaceUp = false {
-		didSet {
-			if isFaceUp {
-				isSeen = true
-			}
-		}
-	}
+	var isFaceUp = false	{ didSet { if isFaceUp { wasFaceUp = true } } }
 	var isMatched = false
-	var isSeen = false
+	var wasFaceUp = false
 	var identifier: Int
 	
-	static var identifierFactory = 0
+	private static var identifierFactory = 0
 	
 	static func getUniqueIdentifier() -> Int {
 		identifierFactory += 1

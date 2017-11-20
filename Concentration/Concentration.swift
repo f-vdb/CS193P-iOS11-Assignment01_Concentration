@@ -24,7 +24,7 @@ class Concentration {
 					cards[index].isMatched = true
 					score += 2
 				} else {
-					if cards[index].isSeen {
+					if cards[index].wasFaceUp {
 						score -= 1
 					}
 				}

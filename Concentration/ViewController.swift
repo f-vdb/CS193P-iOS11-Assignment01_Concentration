@@ -42,7 +42,7 @@ class ViewController: UIViewController {
 	
 	@IBOutlet weak var flipCountLabel: UILabel! {
 		didSet {
-			gameScoreLabel.text = "Score: \(game.score)"
+			gameScoreLabel?.text = "Score: \(game.score)"
 		}
 	}
 	@IBOutlet weak var gameScoreLabel: UILabel!
