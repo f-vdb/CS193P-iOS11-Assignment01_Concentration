@@ -41,7 +41,6 @@ class ViewController: UIViewController {
 	}
 	
 	@IBOutlet weak var flipCountLabel: UILabel!
-
 	@IBOutlet weak var gameScoreLabel: UILabel!
 	
 	@IBOutlet var cardButtons: [UIButton]!
@@ -58,6 +57,7 @@ class ViewController: UIViewController {
 		theme = newTheme
 		game = Concentration(numberOfPairsOfCards: (cardButtons.count + 1) / 2)
 		flipCountLabel.text = "Flips: \(game.flipCount)"
+		gameScoreLabel.text = "Score: \(game.score)"
 		emoji = [:]
 		emojiChoices = theme.emoji
 	}
@@ -65,7 +65,7 @@ class ViewController: UIViewController {
 	override func viewDidLoad() {
 		startNewGame()
 	}
-	
+		
 	@IBAction func touchCard(_ sender: UIButton) {
 		if let cardNumber = cardButtons.index(of: sender) {
 			game.chooseCard(at: cardNumber)

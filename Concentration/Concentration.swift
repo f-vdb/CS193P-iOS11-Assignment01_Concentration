@@ -15,6 +15,16 @@ class Concentration {
 	var score = 0
 	var flipCount = 0
 	
+	static var matchPoints = 20
+	static var wasFaceUpPenalty = 10
+	static var maxTimePanalty = 10
+	
+	private var date = Date()
+	private var currentDate: Date { return Date() }
+	var timeInterval: Int {
+		return Int(-date.timeIntervalSinceNow)
+	}
+	
 	func chooseCard(at index: Int) {
 		if !cards[index].isMatched {
 			if let matchIndex = indexOfOneAndOnlyFaceUpCard, matchIndex != index {
@@ -22,10 +32,10 @@ class Concentration {
 				if cards[matchIndex].identifier == cards[index].identifier {
 					cards[matchIndex].isMatched = true
 					cards[index].isMatched = true
-					score += 2
+					score += (Concentration.matchPoints - min(timeInterval, Concentration.maxTimePanalty))
 				} else {
 					if cards[index].wasFaceUp {
-						score -= 1
+						score -= (Concentration.wasFaceUpPenalty + min(timeInterval, Concentration.maxTimePanalty))
 					}
 				}
 				cards[index].isFaceUp = true
@@ -40,6 +50,7 @@ class Concentration {
 			}
 		}
 		flipCount += 1
+		date = currentDate
 	}
 	
 	init(numberOfPairsOfCards: Int) {
