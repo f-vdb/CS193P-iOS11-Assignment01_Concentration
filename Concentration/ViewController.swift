@@ -40,11 +40,8 @@ class ViewController: UIViewController {
 		}
 	}
 	
-	@IBOutlet weak var flipCountLabel: UILabel! {
-		didSet {
-			gameScoreLabel?.text = "Score: \(game.score)"
-		}
-	}
+	@IBOutlet weak var flipCountLabel: UILabel!
+
 	@IBOutlet weak var gameScoreLabel: UILabel!
 	
 	@IBOutlet var cardButtons: [UIButton]!
@@ -74,6 +71,7 @@ class ViewController: UIViewController {
 			game.chooseCard(at: cardNumber)
 			updateViewFromModel()
 			flipCountLabel.text = "Flips: \(game.flipCount)"
+			gameScoreLabel.text = "Score: \(game.score)"
 		} else {
 			print("choosen card was not in cardButtons")
 		}
