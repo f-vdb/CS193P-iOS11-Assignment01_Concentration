@@ -34,7 +34,7 @@ class Concentration {
 					cards[index].isMatched = true
 					score += (Concentration.matchPoints - min(timeInterval, Concentration.maxTimePanalty))
 				} else {
-					if cards[index].wasFaceUp {
+					if cards[index].isSeen {
 						score -= (Concentration.wasFaceUpPenalty + min(timeInterval, Concentration.maxTimePanalty))
 					}
 				}

@@ -31,7 +31,7 @@ class ViewController: UIViewController {
 	private var theme: ThemaData! {
 		didSet {
 			view.backgroundColor = theme.backGroundColor
-			_ = cardButtons.map {
+			cardButtons.forEach {
 				$0.backgroundColor = theme.cardBackColor
 				$0.setTitle("", for: UIControlState.normal)
 			}
@@ -46,7 +46,9 @@ class ViewController: UIViewController {
 	@IBOutlet var cardButtons: [UIButton]!
 	
 	@IBOutlet weak var newGameButton: UIButton! {
-		didSet {   newGameButton.titleLabel?.numberOfLines = 0  }
+		didSet {
+			newGameButton.titleLabel?.numberOfLines = 0
+		}
 	}
 	
 	@IBAction func onNewGame(_ sender: UIButton, forEvent event: UIEvent) {
@@ -101,7 +103,7 @@ class ViewController: UIViewController {
 		return emoji[card.identifier] ?? "?"
 	}
 	
-	private lazy var emojiChoices: [String] = { return theme.emoji  }()
+	private lazy var emojiChoices: [String] = { return theme.emoji }()
 
 }
 
